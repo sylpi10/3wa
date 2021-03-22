@@ -4,5 +4,5 @@ const phones = [
 	{ name: "iphone B", priceHT: 200 },
 ];
 
-const priceTtc = phones.map(el => el.priceHT += (1 * 20/100));
+const priceTtc = phones.map(el => el.priceHT *= (1 + 20/100));
 console.log(priceTtc);
