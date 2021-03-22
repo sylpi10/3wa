@@ -42,5 +42,11 @@ const students = [
 console.log("\n ------- ");
 
 for (const student of students) {
-    console.log(`name: ${student.name}, sister: ${student.family.sister}\n `);
+    // console.log(`name: ${student.name}, sister: ${student.family.sister}\n `);
+    const {name, family: {sister}, } = student;
+    console.log(name, sister);
+}
+
+for (const {name, family: {sister}} of students) {
+    console.log(name, sister);
 }
