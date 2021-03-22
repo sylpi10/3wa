@@ -1,5 +1,7 @@
-function calcTTC(a, b = a * (20/100)) {
-    console.log(a + b);
+function calcTTC(priceHt,tva = 20) {
+    
+    console.log(priceHt * (1 + tva / 100));
+
 }
 
 calcTTC(200);
