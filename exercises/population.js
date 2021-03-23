@@ -20,10 +20,9 @@ populations.map(person => person.lenName = person.name.length);
 
 console.log(populations);
 
-const groupName = []
 
+// filter by name length
 const lenGroup = new Set();
-
 populations.map(person => lenGroup.add(person.lenName));
 
 // console.log(lenGroup);
@@ -33,7 +32,18 @@ console.log('\n filter : ------------ \n');
 const filteredByLength = [];
 
 for (const len of lenGroup) {
-    const filtered = populations.filter(person => person.lenName == len);
+    const filtered = populations.filter(person => person.lenName === len);
+    // filteredByLength.push([len, filtered]); 
     filteredByLength.push(len, filtered); 
 }
 console.log(filteredByLength);
+
+// with map
+const group = [...lenGroup].map(lenName => populations.filter(person => person.lenName === lenName));
+// console.log(group);
+
+// with a Map 
+const filteredByLength2 = [];
+
+const mapPopulation = new Map(filteredByLength2);
+console.log(mapPopulation);
