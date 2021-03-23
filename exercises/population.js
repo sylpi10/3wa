@@ -28,9 +28,12 @@ populations.map(person => lenGroup.add(person.lenName));
 
 // console.log(lenGroup);
 
-console.log('\n filter : ------------');
+console.log('\n filter : ------------ \n');
+
+const filteredByLength = [];
 
 for (const len of lenGroup) {
-    filteredByLength = populations.filter(person => person.lenName == len);
-    console.log(filteredByLength);
+    const filtered = populations.filter(person => person.lenName == len);
+    filteredByLength.push(len, filtered); 
 }
+console.log(filteredByLength);
