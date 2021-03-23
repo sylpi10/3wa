@@ -30,12 +30,7 @@ class Player{
      }
 }
 
-class Knight extends Player{
-    // constructor(force, life, shot, name) {
-	// 	super(force, life, shot, name);
-	// }
-  
-}
+class Knight extends Player{}
 class Dragon extends Player{
     constructor() {
 		super();
@@ -50,10 +45,15 @@ class Game{
 
     run(){
         while (player1.life >= 0 || player2.life >= 0 ) {
-            player1.hit(player2);
-            console.log(`${player1.name} shots !! ${player2.name} has ${player2.life} points of life`);
-            player2.hit(player1);
-            console.log(`${player2.name} shots !! ${player1.name} has ${player1.life} points of life`);
+            let rand = Math.floor(Math.random() * Math.floor(3));
+            if (rand > 1) {
+                player1.hit(player2)
+                console.log(`${player1.name} shots !! ${player2.name} has ${player2.life} points of life`);
+            }else{
+                player2.hit(player1);
+                console.log(`${player2.name} shots !! ${player1.name} has ${player1.life} points of life`);
+            }
+
         }
     }
 }
