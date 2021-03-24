@@ -14,28 +14,21 @@ class Player{
     set life(life){
         this._life = life;
     }
-    set shot(shot){
-        this._shot = shot;
-    }
-    get shot(){
-        return this._shot;
-    }
+
     get name(){
         return this._name;
     }
 
     hit(player){
-         player.life -= Math.floor(Math.random() * Math.floor(20));
-         player.shot++;
+        //  player.life -= Math.floor(Math.random() * Math.floor(20));
+         player.life -= this.force * Math.floor(Math.random() * Math.floor(5));
+         this.shot++;
      }
 }
 
 class Knight extends Player{}
-class Dragon extends Player{
-    constructor() {
-		super();
-	}
-}
+class Dragon extends Player{}
+
 
 class Game{
     constructor(player1, player2){
@@ -44,22 +37,22 @@ class Game{
     }
 
     run(){
-        while (player1.life >= 0 || player2.life >= 0 ) {
-            let rand = Math.floor(Math.random() * Math.floor(3));
+        while (knight.life > 0 && dragon.life > 0 ) {
+            const rand = Math.floor(Math.random() * Math.floor(3));
             if (rand > 1) {
-                player1.hit(player2)
-                console.log(`${player1.name} shots !! ${player2.name} has ${player2.life} points of life`);
+                knight.hit(dragon)
+                console.log(`${knight.name} shots !! ${dragon.name} has ${dragon.life} points of life`);
             }else{
-                player2.hit(player1);
-                console.log(`${player2.name} shots !! ${player1.name} has ${player1.life} points of life`);
+                dragon.hit(knight);
+                console.log(`${dragon.name} shots !! ${knight.name} has ${knight.life} points of life`);
             }
 
         }
     }
 }
 
-player1 = new Player(14,120,0,"knight");
-player2 = new Player(16,100,0,"dragon");
+knight = new Knight(14,120,0,"knight");
+dragon = new Dragon(16,100,0,"dragon");
 
-game = new Game(player1, player2);
+game = new Game(knight, dragon);
 game.run();
