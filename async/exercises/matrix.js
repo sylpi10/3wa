@@ -20,15 +20,12 @@ getJsonFromFile('./data/matrix.json')
      // filter nums
      for (const array of matrix) {
       
-        const newArr = [];
          const nums = array.filter(m => typeof(m) === 'number');
-        //  let average = array.filter(m => typeof(m) !== 'number');
 
          average = parseFloat(nums.reduce((total, curr) => total + curr)/ nums.length);
       
         // generate new tabs where NONE = average
-        // console.log(array);
-        array.map( val => typeof(val) == "number" ? newArr.push(nums) : newArr.push(average));
+        const newArr = array.map( val => typeof(val) == "number" ? val : average);
 
          console.log(newArr);
      }
