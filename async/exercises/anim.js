@@ -1,13 +1,13 @@
 const anim = (word) => {
 
     return new Promise((resolve, reject)=> {
-        const rand = Math.floor(Math.random() * Math.floor(26));
-        const randRes = Math.floor(Math.random() * Math.floor(10));
-        const splitted = word.split('');
-        const letter = splitted[rand];
-
+        word = "abcdefghijklmnopqrstuvwx";
+        const rand = Math.ceil(Math.random() * 23);
+        const randRes = Math.ceil(Math.random() * 9);
+        const letter = word[rand];
+        
         resolve((console.log(`${letter}${randRes}`)));
     });
 } 
 
-anim("abcdefghijklmnopqrstuvwxyz");
+anim();
