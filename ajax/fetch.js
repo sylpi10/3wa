@@ -1,6 +1,5 @@
 const fetch = require("node-fetch");
 
-const users = new Map();
 
 fetch("https://jsonplaceholder.typicode.com/users")
 
@@ -11,4 +10,12 @@ fetch("https://jsonplaceholder.typicode.com/users")
     // })
 
     .then((res) => res.json())
-    .then((res) => res.map(user => console.log(users.set(user.name, user.address.geo))));
+    // .then((res) => res.map(user => console.log(users.set(user.name, user.address.geo))));
+    .then((res => {
+        const users = new Map();
+
+        for (const user of res) {
+            users.set(user.name, user.address.geo);
+        }
+        console.log(users);
+    }))
