@@ -17,18 +17,17 @@ const getJsonFromFile = (path) =>
 getJsonFromFile('./data/matrix.json')
 
  .then(({matrix}) => {
-     // filter nums
+    const newMatrix = [];
+    //for each sub array
      for (const array of matrix) {
-      
-         const nums = array.filter(m => typeof(m) === 'number');
-
-         average = parseFloat(nums.reduce((total, curr) => total + curr)/ nums.length);
-      
+         // filter nums
+        const nums = array.filter(n => typeof(n) === 'number');
+        // calc average
+        const average = nums.reduce((acc, curr) => acc + curr) / nums.length;
         // generate new tabs where NONE = average
-        const newArr = array.map( val => typeof(val) == "number" ? val : average);
+        const newArr = array.map( val => typeof(val) === "number" ? val : average);
 
-         console.log(newArr);
-     }
-
-
- })
+        newMatrix.push(newArr);
+    };
+    console.log(newMatrix);
+ });
